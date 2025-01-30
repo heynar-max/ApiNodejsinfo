@@ -218,6 +218,17 @@ export function EnviarMensajeWhastapp  (text, number) {
                 "body": "Espero se anime. "
             }
         });
+    }else if(text.includes("btncomprar")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "gracias por comprar. "
+            }
+        });
 
     }else if(text.includes("lista")){
         data = JSON.stringify({
