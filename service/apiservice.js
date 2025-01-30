@@ -292,7 +292,7 @@ export function EnviarMensajeWhastapp  (text, number) {
         body : data,
         headers : {
             "Content-Type" : "application/json",
-            Authorization :"Bearer EAAy9wgEuekQBOyD3FYFBdDYv9BMSf9aUe6TGTJICLIkgavPHjAakELdoyVVxp3nlWpZBJp9b6CUuHpvYAV9sBPZAVtQalofqS9LbPSW6NqKcjeirlEC37OlFbPeFoU2ONGUNRSheZCByRrkUgn4xgr5qdD6EuRTk9Pez8vVmDR9iTyFlqnzje6U6na10Cs9ugZDZD"
+            Authorization :"Bearer EAAGXpgKoZBOgBO5bcgM4JAZBDTQZCyolZCDpBQVp2l9kLZC4cubvR2OOy4RGBGj98nJCEOcCFAFaz7IDEJcZA228IC8ewuAm0xbheos80Pe6KEJOnTLCrQJBLSJN7K1O7UlHjMBOrsFHsZCNrKAEbPYWuMtne0x2jgocspAto9QPLwoAR6oc1kvRZCQAZAKia8CfqQQZDZD"
         }
     };
 
