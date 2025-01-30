@@ -45,6 +45,7 @@ export const recibir = async (req, res) => {
             } else if (typeInteractive === "list_reply") {
                 text = objetoMensaje[0]["interactive"]["list_reply"]["id"];
                 console.log(text);
+                EnviarMensajeWhastapp(text, number);
             }
 
             logText += `| Interactivo: ${text} | De: ${number}`;
