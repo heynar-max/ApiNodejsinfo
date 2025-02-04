@@ -55,30 +55,36 @@ export function EnviarMensajeWhastapp(text, number) {
 
         const data = JSON.stringify({
             "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "interactive",
-            "interactive": {
-                "type": "button",
-                "body": {
-                    "text": `${product.title} – ${product.price}\n\n${product.description}`
-                },
-                "footer": {
-                    "text": "¿Quieres comprar este producto?"
-                },
-                "action": {
-                    "buttons": [
-                        {
-                            "type": "reply",
-                            "reply": {
-                                "id": product.id,
-                                "title": "🛒 Comprar ahora"
-                            }
-                        }
-                    ]
+        "recipient_type": "individual",
+        "to": number,
+        "type": "interactive",
+        "interactive": {
+            "type": "button",
+            "header": {
+                "type": "image",
+                "image": {
+                    "link": product.image
                 }
+            },
+            "body": {
+                "text": `${product.title} – ${product.price}\n\n${product.description}`
+            },
+            "footer": {
+                "text": "¿Quieres comprar este producto?"
+            },
+            "action": {
+                "buttons": [
+                    {
+                        "type": "reply",
+                        "reply": {
+                            "id": product.id,
+                            "title": "🛒 Comprar ahora"
+                        }
+                    }
+                ]
             }
-        });
+        }
+    });
 
         sendRequest(data);
         return;
