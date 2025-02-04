@@ -9,15 +9,36 @@ export function EnviarMensajeWhastapp  (text, number) {
     if(text.includes("hola")){
         data = JSON.stringify({
             
-            "messaging_product": "whatsapp",    
-            "recipient_type": "individual",
+            "messaging_product": "whatsapp",
             "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": false,
-                "body": "🎁 Hola Bienvenido !! Quieres conoces nuestros productos?."
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": "🎁 Hola Bienvenido !! Quieres conoces nuestros productos?"
+                },
+                "footer": {
+                    "text": "Selecciona una de las opciones"
+                },
+                "action" :{
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnsi",
+                                "title":"Si"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnno",
+                                "title":"No"
+                            }
+                        },
+                    ]
+                }
             }
-            
         });
     }else if(text == 1) {
         data = JSON.stringify({
@@ -143,48 +164,6 @@ export function EnviarMensajeWhastapp  (text, number) {
             
         });
 
-    }else if(text.includes("boton") ) {
-        data = JSON.stringify({
-            
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "interactive",
-            "interactive": {
-                "type": "button",
-                "body": {
-                    "text": "¿Confirmas tu registro?"
-                },
-                "footer": {
-                    "text": "Selecciona una de las opciones"
-                },
-                "action" :{
-                    "buttons": [
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnsi",
-                                "title":"Si"
-                            }
-                        },
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnno",
-                                "title":"No"
-                            }
-                        },
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btntalvez",
-                                "title":"Tal vez"
-                            }
-                        }
-                    ]
-                }
-            }
-            
-        });
     }else if(text.includes("btnsi")){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
@@ -207,17 +186,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 "body": "Entiendo, muchas gracias. "
             }
         });
-    }else if(text.includes("btntalvez")){
-        data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": false,
-                "body": "Espero se anime. "
-            }
-        });
+    
     }else if(text.includes("btncomprar")){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
