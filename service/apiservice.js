@@ -137,6 +137,172 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
 
+    }else if(text.includes("gracias")) {
+        data = JSON.stringify({
+            
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "Gracias a ti por contactarme. 🤩"
+            }
+            
+        });
+
+    }else if(text.includes("adios") ||  text.includes("bye") || text.includes("nos vemos") ) {
+        data = JSON.stringify({
+            
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "Hasta luego. 🌟"
+            }
+            
+        });
+
+    }else if(text.includes("boton") ) {
+        data = JSON.stringify({
+            
+            "messaging_product": "whatsapp",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": "¿Confirmas tu registro?"
+                },
+                "footer": {
+                    "text": "Selecciona una de las opciones"
+                },
+                "action" :{
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnsi",
+                                "title":"Si"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnno",
+                                "title":"No"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btntalvez",
+                                "title":"Tal vez"
+                            }
+                        }
+                    ]
+                }
+            }
+            
+        });
+    }else if(text.includes("btnsi")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "Excelente muchas gracias por registrarse. 🤩"
+            }
+        });
+    }else if(text.includes("btnno")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "Entiendo, muchas gracias. "
+            }
+        });
+    }else if(text.includes("btntalvez")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "Espero se anime. "
+            }
+        });
+    }else if(text.includes("btncomprar")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "gracias por comprar. "
+            }
+        });
+
+    }else if(text.includes("lista")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type":"list",
+                "body":{
+                    "text":"Selecciona alguna opcion"
+                },
+                "footer":{
+                    "text":"Selecciona una de las opciones para poder ayudarte"
+                },
+                "action":{
+                    "button":"Ver opciones",
+                    "sections":[
+                        {
+                            "title":"Compra y Venta",
+                            "rows":[
+                                {
+                                    "id":"btncomprar",
+                                    "title":"Comprar",
+                                    "description":"Compra los mejores articulos de tecnologia"
+                                },
+                                {
+                                    "id":"btnvender",
+                                    "title":"Vender",
+                                    "description":"Vende lo que ya no estes usando"
+                                }
+                            ]
+                        },
+                        {
+                            "title":"Distribución y Recojo",
+                            "rows":[
+                                {
+                                    "id":"btndireccion",
+                                    "title":"Local",
+                                    "description":"Puedes visitar nuestro local."
+                                },
+                                {
+                                    "id":"btndistribucion",
+                                    "title":"Distribución",
+                                    "description":"La distribución se realiza todos los dias."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        });
+
     } else {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
