@@ -21,7 +21,6 @@ export function EnviarMensajeWhastapp  (text, number) {
     } else if (text == 1) {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
-            "recipient_type": "individual",
             "to": number,
             "type": "interactive",
             "interactive": {
@@ -55,7 +54,6 @@ export function EnviarMensajeWhastapp  (text, number) {
     } else if (text == 2) {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
-            "recipient_type": "individual",
             "to": number,
             "type": "interactive",
             "interactive": {
@@ -89,7 +87,6 @@ export function EnviarMensajeWhastapp  (text, number) {
     } else if (text == 3) {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
-            "recipient_type": "individual",
             "to": number,
             "type": "interactive",
             "interactive": {
@@ -99,12 +96,6 @@ export function EnviarMensajeWhastapp  (text, number) {
                 },
                 "footer": {
                     "text": "¿Quieres comprar este producto?"
-                },
-                "header": {
-                    "type": "image",
-                    "image": {
-                        "link": "https://ejemplo.com/lapicero_diario.jpg" // 🔗 URL real
-                    }
                 },
                 "action": {
                     "buttons": [
