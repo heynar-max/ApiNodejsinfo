@@ -15,7 +15,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             "type": "text",
             "text": {
                 "preview_url": false,
-                "body": "🎁 Hola Bienvenido !! Quieres conoces nuestros productos?."
+                "body": "🚀 Hola Bienvenido "
             }
             
         });
@@ -284,70 +284,17 @@ export function EnviarMensajeWhastapp  (text, number) {
     }else{
         data = JSON.stringify({
             
-            "messaging_product": "whatsapp",
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
             "to": number,
-            "type": "interactive",
-            "interactive": {
-                "type":"list",
-                "body":{
-                    "text":"Selecciona alguna opcion"
-                },
-                "footer":{
-                    "text":"Selecciona una de las opciones para poder ayudarte"
-                },
-                "action":{
-                    "button":"Ver opciones",
-                    "sections":[
-                        {
-                            "title":"Compra y Venta",
-                            "rows":[
-                                {
-                                    "id":"btncomprar",
-                                    "title":"Comprar",
-                                    "description":"Compra los mejores articulos de tecnologia"
-                                },
-                                {
-                                    "id":"btnvender",
-                                    "title":"Vender",
-                                    "description":"Vende lo que ya no estes usando"
-                                }
-                            ]
-                        },
-                        {
-                            "title":"Distribución y Recojo",
-                            "rows":[
-                                {
-                                    "id":"btndireccion",
-                                    "title":"Local",
-                                    "description":"Puedes visitar nuestro local."
-                                },
-                                {
-                                    "id":"btndistribucion",
-                                    "title":"Distribución",
-                                    "description":"La distribución se realiza todos los dias."
-                                }
-                            ]
-                        }
-                    ]
-                }
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "🚀 Hola, visita mi web https://portafoliu.vercel.app para mas información. Escribe *boton* o *lista* para mas opciones. \n \n📌Por favor, ingresa un numero #️⃣ para recibir información.\n \n1️⃣. Información del bot. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en pdf. 📄\n4️⃣. Audio explicando bot. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con Heynar. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜"
             }
             
         });
     }
-    // }else{
-    //     data = JSON.stringify({
-            
-    //         "messaging_product": "whatsapp",    
-    //         "recipient_type": "individual",
-    //         "to": number,
-    //         "type": "text",
-    //         "text": {
-    //             "preview_url": false,
-    //             "body": "🚀 Hola, visita mi web nuestro catalogo para ti. \n \n📌Por favor, ingresa un numero #️⃣ para recibir información.\n \n1️⃣. Información del bot. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en pdf. 📄\n4️⃣. Audio explicando bot. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con Heynar. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜"
-    //         }
-            
-    //     });
-    // }
 
     const option = {
         host : "graph.facebook.com",
