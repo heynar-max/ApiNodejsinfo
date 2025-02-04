@@ -6,14 +6,12 @@ export function EnviarMensajeWhastapp(text, number) {
     text = text.toLowerCase();
 
     if (!clientes[number]) {
-        // Si el usuario no ha ingresado su nombre, lo pedimos
         clientes[number] = { step: "name" };
         sendMessage(number, "👋 ¡Hola! Bienvenido a nuestra tienda de San Valentín ❤️\n\nPor favor, dime tu *nombre* para continuar.");
         return;
     }
 
     if (clientes[number].step === "name") {
-        // Guardamos el nombre y pedimos el correo
         clientes[number].name = text;
         clientes[number].step = "email";
         sendMessage(number, `✨ ¡Gracias, ${text}! Ahora, por favor, envíame tu *correo electrónico*.`);
@@ -21,16 +19,74 @@ export function EnviarMensajeWhastapp(text, number) {
     }
 
     if (clientes[number].step === "email") {
-        // Guardamos el correo y mostramos los productos
         clientes[number].email = text;
         clientes[number].step = "done";
 
-        sendMessage(number, `✅ ¡Perfecto, ${clientes[number].name}! Ya tenemos tus datos. Ahora puedes ver nuestros productos.\n\n📌 Escribe el número del producto para ver la imagen, descripción y opciones de compra:\n\n1️⃣ Rosa con chocolates 🌹🍫\n2️⃣ Peluche con vino 🧸🍷\n3️⃣ Lapicero y diario ✏️📖`);
+        sendMessage(number, `✅ ¡Perfecto, ${clientes[number].name}! Ahora puedes ver nuestros productos.\n\n📌 Escribe el número del producto para ver más detalles:\n\n1️⃣ Rosa con chocolates 🌹🍫\n2️⃣ Peluche con vino 🧸🍷\n3️⃣ Lapicero y diario ✏️📖`);
         return;
     }
 
+    const productos = {
+        "1": {
+            "title": "🌹 Rosa con Chocolates",
+            "price": "$10",
+            "description": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n🎁 Un detalle perfecto para San Valentín. 💖",
+            "image": "https://ejemplo.com/rosa_chocolates.jpg",
+            "id": "comprar_rosa"
+        },
+        "2": {
+            "title": "🧸 Peluche con Vino",
+            "price": "$20",
+            "description": "📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n🎁 Perfecto para una velada romántica. 🍷💘",
+            "image": "https://ejemplo.com/peluche_vino.jpg",
+            "id": "comprar_peluche"
+        },
+        "3": {
+            "title": "✏️ Lapicero y Diario",
+            "price": "$5",
+            "description": "📌 Incluye un elegante diario de cuero y un lapicero metálico.\n🎁 Ideal para quienes aman escribir. 📝✨",
+            "image": "https://ejemplo.com/lapicero_diario.jpg",
+            "id": "comprar_lapicero"
+        }
+    };
+
     if (text === "1" || text === "2" || text === "3") {
-        sendProductMessage(text, number);
+        let product = productos[text];
+
+        const data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": `${product.title} – ${product.price}\n\n${product.description}`
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": product.image
+                    }
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": product.id,
+                                "title": "🛒 Comprar ahora"
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+
+        sendRequest(data);
         return;
     }
 
@@ -55,69 +111,6 @@ function sendMessage(number, message) {
         "text": {
             "preview_url": false,
             "body": message
-        }
-    });
-
-    sendRequest(data);
-}
-
-function sendProductMessage(option, number) {
-    const products = {
-        "1": {
-            "title": "🌹 Rosa con Chocolates",
-            "price": "$10",
-            "description": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n🎁 Un detalle perfecto para San Valentín. 💖",
-            "image": "https://ejemplo.com/rosa_chocolates.jpg",
-            "id": "comprar_rosa"
-        },
-        "2": {
-            "title": "🧸 Peluche con Vino",
-            "price": "$20",
-            "description": "📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n🎁 Perfecto para una velada romántica. 🍷💘",
-            "image": "https://ejemplo.com/peluche_vino.jpg",
-            "id": "comprar_peluche"
-        },
-        "3": {
-            "title": "✏️ Lapicero y Diario",
-            "price": "$5",
-            "description": "📌 Incluye un elegante diario de cuero y un lapicero metálico.\n🎁 Ideal para quienes aman escribir. 📝✨",
-            "image": "https://ejemplo.com/lapicero_diario.jpg",
-            "id": "comprar_lapicero"
-        }
-    };
-
-    const product = products[option];
-
-    const data = JSON.stringify({
-        "messaging_product": "whatsapp",
-        "recipient_type": "individual",
-        "to": number,
-        "type": "interactive",
-        "interactive": {
-            "type": "button",
-            "body": {
-                "text": `${product.title} – ${product.price}\n\n${product.description}`
-            },
-            "footer": {
-                "text": "¿Quieres comprar este producto?"
-            },
-            "header": {
-                "type": "image",
-                "image": {
-                    "link": product.image
-                }
-            },
-            "action": {
-                "buttons": [
-                    {
-                        "type": "reply",
-                        "reply": {
-                            "id": product.id,
-                            "title": "🛒 Comprar ahora"
-                        }
-                    }
-                ]
-            }
         }
     });
 
