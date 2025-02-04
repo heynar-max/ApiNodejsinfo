@@ -14,7 +14,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             "type": "text",
             "text": {
                 "preview_url": false,
-                "body": "🚀 ¡Hola! Bienvenido. ¿Quieres ver nuestros productos de San Valentín? ❤️\n\n📌 Escribe el número del producto para ver la imagen y su precio.\n\n1️⃣ Rosa con chocolates 🌹🍫\n2️⃣ Peluche con vino 🧸🍷\n3️⃣ Lapicero y diario ✏️📖"
+                "body": "🚀 ¡Hola! Bienvenido a nuestra tienda de San Valentín ❤️\n\n📌 Escribe el número del producto para ver la imagen, descripción y opciones de compra:\n\n1️⃣ Rosa con chocolates 🌹🍫\n2️⃣ Peluche con vino 🧸🍷\n3️⃣ Lapicero y diario ✏️📖"
             }
         });
 
@@ -23,10 +23,32 @@ export function EnviarMensajeWhastapp  (text, number) {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to": number,
-            "type": "image",
-            "image": {
-                "link": "https://i.pinimg.com/474x/a8/8e/44/a88e446d097458cf30f5bc675a331de7.jpg", // 🔗 Reemplaza con la URL real de la imagen
-                "caption": "🌹 Rosa con chocolates – $10\n\nUn hermoso detalle para sorprender a tu persona especial. 💖"
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": "🌹 *Rosa con Chocolates* – $10\n\n📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n🎁 Un detalle perfecto para San Valentín. 💖"
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://ejemplo.com/rosa_chocolates.jpg" // 🔗 Reemplaza con tu URL
+                    }
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "comprar_rosa",
+                                "title": "🛒 Comprar ahora"
+                            }
+                        }
+                    ]
+                }
             }
         });
 
@@ -35,10 +57,32 @@ export function EnviarMensajeWhastapp  (text, number) {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to": number,
-            "type": "image",
-            "image": {
-                "link": "https://i.pinimg.com/236x/9f/52/01/9f52012882384f7e8d50c43dcb773084.jpg", // 🔗 URL de la imagen real
-                "caption": "🧸 Peluche con vino – $20\n\nUn regalo romántico y especial para esta fecha. 🍷💘"
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": "🧸 *Peluche con Vino* – $20\n\n📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n🎁 Perfecto para una velada romántica. 🍷💘"
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://ejemplo.com/peluche_vino.jpg" // 🔗 URL de la imagen
+                    }
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "comprar_peluche",
+                                "title": "🛒 Comprar ahora"
+                            }
+                        }
+                    ]
+                }
             }
         });
 
@@ -47,10 +91,49 @@ export function EnviarMensajeWhastapp  (text, number) {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to": number,
-            "type": "image",
-            "image": {
-                "link": "https://i.pinimg.com/474x/d9/f7/d4/d9f7d4a546537df69ba0d5ded381ea49.jpg", // 🔗 URL real
-                "caption": "✏️ Lapicero y diario – $5\n\nUn detalle sencillo pero significativo para esa persona especial. 💕"
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": "✏️ *Lapicero y Diario* – $5\n\n📌 Incluye un elegante diario de cuero y un lapicero metálico.\n🎁 Ideal para quienes aman escribir. 📝✨"
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://ejemplo.com/lapicero_diario.jpg" // 🔗 URL real
+                    }
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "comprar_lapicero",
+                                "title": "🛒 Comprar ahora"
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+
+    } else if (text.includes("comprar_")) {
+        let producto = "";
+        if (text.includes("rosa")) producto = "🌹 Rosa con Chocolates";
+        if (text.includes("peluche")) producto = "🧸 Peluche con Vino";
+        if (text.includes("lapicero")) producto = "✏️ Lapicero y Diario";
+
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": `✅ Has seleccionado *${producto}*.\n\n💳 Para completar tu compra, responde con:\n\n- *Efectivo* 💵\n- *Transferencia bancaria* 🏦\n- *Pago con tarjeta* 💳`
             }
         });
 
@@ -66,6 +149,67 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
     }
+
+    // if (text.includes("hola")) {
+    //     data = JSON.stringify({
+    //         "messaging_product": "whatsapp",
+    //         "recipient_type": "individual",
+    //         "to": number,
+    //         "type": "text",
+    //         "text": {
+    //             "preview_url": false,
+    //             "body": "🚀 ¡Hola! Bienvenido. ¿Quieres ver nuestros productos de San Valentín? ❤️\n\n📌 Escribe el número del producto para ver la imagen y su precio.\n\n1️⃣ Rosa con chocolates 🌹🍫\n2️⃣ Peluche con vino 🧸🍷\n3️⃣ Lapicero y diario ✏️📖"
+    //         }
+    //     });
+
+    // } else if (text == "1") {
+    //     data = JSON.stringify({
+    //         "messaging_product": "whatsapp",
+    //         "recipient_type": "individual",
+    //         "to": number,
+    //         "type": "image",
+    //         "image": {
+    //             "link": "https://i.pinimg.com/474x/a8/8e/44/a88e446d097458cf30f5bc675a331de7.jpg", // 🔗 Reemplaza con la URL real de la imagen
+    //             "caption": "🌹 Rosa con chocolates – $10\n\nUn hermoso detalle para sorprender a tu persona especial. 💖"
+    //         }
+    //     });
+
+    // } else if (text == "2") {
+    //     data = JSON.stringify({
+    //         "messaging_product": "whatsapp",
+    //         "recipient_type": "individual",
+    //         "to": number,
+    //         "type": "image",
+    //         "image": {
+    //             "link": "https://i.pinimg.com/236x/9f/52/01/9f52012882384f7e8d50c43dcb773084.jpg", // 🔗 URL de la imagen real
+    //             "caption": "🧸 Peluche con vino – $20\n\nUn regalo romántico y especial para esta fecha. 🍷💘"
+    //         }
+    //     });
+
+    // } else if (text == "3") {
+    //     data = JSON.stringify({
+    //         "messaging_product": "whatsapp",
+    //         "recipient_type": "individual",
+    //         "to": number,
+    //         "type": "image",
+    //         "image": {
+    //             "link": "https://i.pinimg.com/474x/d9/f7/d4/d9f7d4a546537df69ba0d5ded381ea49.jpg", // 🔗 URL real
+    //             "caption": "✏️ Lapicero y diario – $5\n\nUn detalle sencillo pero significativo para esa persona especial. 💕"
+    //         }
+    //     });
+
+    // } else {
+    //     data = JSON.stringify({
+    //         "messaging_product": "whatsapp",
+    //         "recipient_type": "individual",
+    //         "to": number,
+    //         "type": "text",
+    //         "text": {
+    //             "preview_url": false,
+    //             "body": "🚀 No entendí tu mensaje. Escribe *hola* para ver las opciones de productos. 😊"
+    //         }
+    //     });
+    // }
 
     // if (text.includes("hola")) {
     //     data = JSON.stringify({
