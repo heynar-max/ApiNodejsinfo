@@ -18,7 +18,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
 
-    } else if (text == "1") {
+    } else if (text == 1) {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -52,7 +52,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
 
-    } else if (text == "2") {
+    } else if (text == 2) {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -86,7 +86,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
 
-    } else if (text == "3") {
+    } else if (text == 3) {
         data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
