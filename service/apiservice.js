@@ -66,12 +66,6 @@ export function EnviarMensajeWhastapp(text, number) {
                 "footer": {
                     "text": "¿Quieres comprar este producto?"
                 },
-                "header": {
-                    "type": "image",
-                    "image": {
-                        "link": product.image
-                    }
-                },
                 "action": {
                     "buttons": [
                         {
