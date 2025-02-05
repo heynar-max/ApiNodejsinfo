@@ -1,4 +1,3 @@
-
 import { request } from "https";
 
 const clientes = {}; // Almacena los datos temporales de los clientes
@@ -7,12 +6,18 @@ export function EnviarMensajeWhastapp(text, number) {
     text = text.toLowerCase();
 
     if (!clientes[number]) {
-        clientes[number] = { step: "saludo" };
-        sendMessage(number, "👋 ¡Hola! Bienvenido/a a nuestra tienda de San Valentín ❤️. ¿Te gustaría ver nuestros productos? (Responde con 'sí' o 'no')");
+        clientes[number] = { step: "solicitar_nombre" };
+        sendMessage(number, "👋 ¡Hola! Bienvenido/a a nuestra tienda de San Valentín ❤️. Por favor, dime tu *nombre* para continuar.");
         return;
     }
 
     switch (clientes[number].step) {
+        case "solicitar_nombre":
+            clientes[number].nombre = text;
+            clientes[number].step = "saludo";
+            sendMessage(number, `✨ ¡Gracias, ${text}! ¿Te gustaría ver nuestros productos? (Responde con 'sí' o 'no')`);
+            break;
+
         case "saludo":
             if (text === "sí" || text === "si") {
                 clientes[number].step = "mostrar_productos";
@@ -66,12 +71,12 @@ export function EnviarMensajeWhastapp(text, number) {
         case "confirmar_direccion":
             clientes[number].direccion = text;
             clientes[number].step = "saludo"; // Reiniciar el flujo
-            sendMessage(number, "¡Gracias por tu compra! 🎁 Tu pedido será entregado en breve. Cualquier duda, escríbeme.");
+            sendMessage(number, `¡Gracias por tu compra, ${clientes[number].nombre}! 🎁 Tu pedido será entregado en breve. Cualquier duda, escríbeme.`);
             break;
 
         default:
             sendMessage(number, "¡Hola! ¿En qué puedo ayudarte?");
-            clientes[number].step = "saludo";
+            clientes[number].step = "solicitar_nombre";
             break;
     }
 }
