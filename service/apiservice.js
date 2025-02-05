@@ -1,13 +1,9 @@
 import { request } from "https";
 
 const clientes = {}; // Almacena los datos temporales de los clientes
-const tiempoExpiracion = 120000; // 2 minutos en milisegundos
 
 export function EnviarMensajeWhastapp(text, number) {
     text = text.toLowerCase();
-
-    // Reiniciar el temporizador cada vez que el usuario interactúa
-    reiniciarTemporizador(number);
 
     if (!clientes[number]) {
         clientes[number] = { step: "name" };
@@ -108,7 +104,6 @@ export function EnviarMensajeWhastapp(text, number) {
     sendMessage(number, `🚀 No entendí tu mensaje, *${clientes[number].name}*. Escribe *hola* para ver las opciones de productos. 😊`);
 }
 
-// Función para enviar mensajes de WhatsApp
 function sendMessage(number, message) {
     const data = JSON.stringify({
         "messaging_product": "whatsapp",
@@ -124,7 +119,6 @@ function sendMessage(number, message) {
     sendRequest(data);
 }
 
-// Función para enviar peticiones a la API de WhatsApp
 function sendRequest(data) {
     const option = {
         host: "graph.facebook.com",
@@ -145,20 +139,4 @@ function sendRequest(data) {
 
     req.write(data);
     req.end();
-}
-
-// Función para manejar la inactividad
-function reiniciarTemporizador(number) {
-    if (!clientes[number]) {
-        clientes[number] = {}; // Inicializar si no existe
-    }
-
-    if (clientes[number].timeout) {
-        clearTimeout(clientes[number].timeout);
-    }
-
-    clientes[number].timeout = setTimeout(() => {
-        delete clientes[number]; // Elimina los datos del cliente tras 2 minutos de inactividad
-        sendMessage(number, "⏳ Parece que no has respondido en un tiempo. Vamos a empezar de nuevo. \n\nEscribe *hola* para volver a iniciar la conversación. 😊");
-    }, tiempoExpiracion);
 }
