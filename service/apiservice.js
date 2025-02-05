@@ -23,21 +23,21 @@ export function EnviarMensajeWhastapp(text, number) {
         "1": {
             "title": "🌹 Rosa con Chocolates",
             "price": "$10",
-            "description": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n🎁 Un detalle perfecto para San Valentín. 💖",
+            "description": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n\n🎁 Un detalle perfecto para San Valentín. 💖",
             "image": "https://i.pinimg.com/474x/a8/8e/44/a88e446d097458cf30f5bc675a331de7.jpg",
             "id": "comprar_rosa"
         },
         "2": {
             "title": "🧸 Peluche con Vino",
             "price": "$20",
-            "description": "📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n🎁 Perfecto para una velada romántica. 🍷💘",
+            "description": "📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n\n🎁 Perfecto para una velada romántica. 🍷💘",
             "image": "https://i.pinimg.com/236x/9f/52/01/9f52012882384f7e8d50c43dcb773084.jpg",
             "id": "comprar_peluche"
         },
         "3": {
             "title": "✏️ Lapicero y Diario",
             "price": "$5",
-            "description": "📌 Incluye un elegante diario de cuero y un lapicero metálico.\n🎁 Ideal para quienes aman escribir. 📝✨",
+            "description": "📌 Incluye un elegante diario de cuero y un lapicero metálico.\n\n🎁 Ideal para quienes aman escribir. 📝✨",
             "image": "https://i.pinimg.com/474x/d9/f7/d4/d9f7d4a546537df69ba0d5ded381ea49.jpg",
             "id": "comprar_lapicero"
         }
