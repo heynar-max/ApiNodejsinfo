@@ -149,7 +149,11 @@ function sendRequest(data) {
 
 // Función para manejar la inactividad
 function reiniciarTemporizador(number) {
-    if (clientes[number]?.timeout) {
+    if (!clientes[number]) {
+        clientes[number] = {}; // Inicializar si no existe
+    }
+
+    if (clientes[number].timeout) {
         clearTimeout(clientes[number].timeout);
     }
 
