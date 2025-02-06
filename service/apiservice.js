@@ -42,7 +42,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": "¿Confirmas tu registro?"
+                    "text": "Selecciona el de su interes"
                 },
                 "footer": {
                     "text": "Selecciona una de las opciones"
@@ -52,22 +52,22 @@ export function EnviarMensajeWhastapp  (text, number) {
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"rosachoco",
-                                "title":"Rosa con chocolat 🌹"
+                                "id":"producto1",
+                                "title":"Sweetheart 🧸 White"
                             }
                         },
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"peluvino",
-                                "title":"Peluche con vino 🧸🍷"
+                                "id":"producto2",
+                                "title":"Puppy Love 🧸"
                             }
                         },
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"lapidia",
-                                "title":"Lapiz y diario ✏️📖"
+                                "id":"producto3",
+                                "title":"Sweetheart 🧸 Brown"
                             }
                         }
                     ]
@@ -86,7 +86,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 "body": "Entiendo, muchas gracias. "
             }
         });
-    }else if(text.includes("rosachoco")){
+    }else if(text.includes("producto1")){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -97,11 +97,11 @@ export function EnviarMensajeWhastapp  (text, number) {
                     "header": {
                         "type": "image",
                         "image": {
-                            "link": "https://i.pinimg.com/474x/a8/8e/44/a88e446d097458cf30f5bc675a331de7.jpg",
+                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879497/kwocjvsoayoz8wsdawz8.jpg",
                         }
                     },
                     "body": {
-                        "text": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n\n🎁 Un detalle perfecto para San Valentín. 💖\n\n💵 Precio: $10",
+                        "text": "📌 Includes Sweetheart Teddy White - 12 Ferrero Rocher - 1 Heart Balloon - 1 Rice Krispies Treats 2.2 oz.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $50",
                     },
                     "footer": {
                         "text": "¿Quieres comprar este producto?"
@@ -119,7 +119,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                     }
                 }
             });
-    }else if(text.includes("peluvino")){
+    }else if(text.includes("producto2")){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -130,11 +130,11 @@ export function EnviarMensajeWhastapp  (text, number) {
                     "header": {
                         "type": "image",
                         "image": {
-                            "link": "https://i.pinimg.com/236x/9f/52/01/9f52012882384f7e8d50c43dcb773084.jpg",
+                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879497/wlasox3w4jxlxgvjiycj.jpg",
                         }
                     },
                     "body": {
-                        "text": "📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n\n🎁 Perfecto para una velada romántica. 🍷💘\n\n💵 Precio: $10",
+                        "text": "📌 Includes Pirouline - 2 Golden Oreos Vanilla 22g - 12 Ferrero Rocher - 1 Heart Balloon - 1 Business card.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $40",
                     },
                     "footer": {
                         "text": "¿Quieres comprar este producto?"
@@ -152,7 +152,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                     }
                 }
             });
-    }else if(text.includes("lapidia")){
+    }else if(text.includes("producto3")){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -163,11 +163,11 @@ export function EnviarMensajeWhastapp  (text, number) {
                     "header": {
                         "type": "image",
                         "image": {
-                            "link": "https://i.pinimg.com/474x/d9/f7/d4/d9f7d4a546537df69ba0d5ded381ea49.jpg",
+                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879699/nlsrnjdnxtzcbqnc4o27.jpg",
                         }
                     },
                     "body": {
-                        "text": "📌 Incluye un elegante diario de cuero y un lapicero metálico.\n\n🎁 Ideal para quienes aman escribir. 📝✨\n\n💵 Precio: $10",
+                        "text": "📌 Includes Sweetheart Teddy Brown - 6 Ferrero Rocher - 1 Heart Balloon - 1 Business card.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $50",
                     },
                     "footer": {
                         "text": "¿Quieres comprar este producto?"
