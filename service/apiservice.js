@@ -43,21 +43,21 @@ export function EnviarMensajeWhastapp(text, number) {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto_1",
-                                    "title": "🌹 Rosa con chocolates"
+                                    "title": "🌹 Rosa con choco"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto_2",
-                                    "title": "🧸 Peluche con vino"
+                                    "title": "🧸 Peluc con vino"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto_3",
-                                    "title": "✏️ Lapicero y diario"
+                                    "title": "✏️ Lapiz y diario"
                                 }
                             }
                         ]
