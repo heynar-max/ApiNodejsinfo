@@ -29,7 +29,7 @@ export function EnviarMensajeWhastapp(text, number) {
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": "Ahora puedes ver nuestros productos.\n\n📌 Selecciona un producto:"
+                    "text": "Selecciona un producto:"
                 },
                 
                 "action" :{
