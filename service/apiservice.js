@@ -4,12 +4,13 @@ const clientes = {}; // Almacena los datos temporales de los clientes
 
 export function EnviarMensajeWhastapp(text, number) {
     text = text.toLowerCase();
+
     let data;
 
     switch (true) {
-        case text.includes("hola"): {
+        case text.includes("hola"):
             data = JSON.stringify({
-                "messaging_product": "whatsapp",
+                "messaging_product": "whatsapp",    
                 "recipient_type": "individual",
                 "to": number,
                 "type": "text",
@@ -19,24 +20,37 @@ export function EnviarMensajeWhastapp(text, number) {
                 }
             });
             break;
-        }
 
-        case /^[a-zA-Z]+$/.test(text): { // Guarda el nombre del cliente
-            clientes[number] = text;
+        case !clientes[number] && !text.includes("boton"):
+            // Si no tenemos el nombre del cliente, lo pedimos
             data = JSON.stringify({
-                "messaging_product": "whatsapp",
+                "messaging_product": "whatsapp",    
                 "recipient_type": "individual",
                 "to": number,
                 "type": "text",
                 "text": {
                     "preview_url": false,
-                    "body": `¡Gracias, ${text}! Ahora selecciona un producto escribiendo *boton*.`
+                    "body": "Por favor, dinos tu *nombre* para continuar."
                 }
             });
             break;
-        }
 
-        case text.includes("boton"): {
+        case !clientes[number]:
+            // Guardamos el nombre del cliente
+            clientes[number] = text;
+            data = JSON.stringify({
+                "messaging_product": "whatsapp",    
+                "recipient_type": "individual",
+                "to": number,
+                "type": "text",
+                "text": {
+                    "preview_url": false,
+                    "body": `¡Gracias, ${text}! 😊\n\nEscribe *boton* para ver nuestros productos.`
+                }
+            });
+            break;
+
+        case text.includes("boton"):
             data = JSON.stringify({
                 "messaging_product": "whatsapp",
                 "to": number,
@@ -44,21 +58,41 @@ export function EnviarMensajeWhastapp(text, number) {
                 "interactive": {
                     "type": "button",
                     "body": {
-                        "text": "Selecciona un producto:" },
-                    "footer": { "text": "Selecciona una de las opciones" },
-                    "action": {
+                        "text": "Selecciona un producto:"
+                    },
+                    "footer": {
+                        "text": "Selecciona una de las opciones"
+                    },
+                    "action" :{
                         "buttons": [
-                            { "type": "reply", "reply": { "id": "producto_1", "title": "🌹 Rosa con chocolates" } },
-                            { "type": "reply", "reply": { "id": "producto_2", "title": "🧸 Peluche con vino" } },
-                            { "type": "reply", "reply": { "id": "producto_3", "title": "✏️ Lapicero y diario" } }
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto_1",
+                                    "title":"🌹 Rosa con choco"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto_2",
+                                    "title":"🧸 Peluche con vino"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto_3",
+                                    "title":"✏️ Lapiz y diario"
+                                }
+                            }
                         ]
                     }
                 }
             });
             break;
-        }
 
-        case text.includes("producto_1"): {
+        case text.includes("producto_1"):
             data = JSON.stringify({
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -68,45 +102,123 @@ export function EnviarMensajeWhastapp(text, number) {
                     "type": "button",
                     "header": {
                         "type": "image",
-                        "image": { "link": "https://i.pinimg.com/474x/a8/8e/44/a88e446d097458cf30f5bc675a331de7.jpg" }
+                        "image": {
+                            "link": "https://i.pinimg.com/474x/a8/8e/44/a88e446d097458cf30f5bc675a331de7.jpg",
+                        }
                     },
                     "body": {
-                        "text": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n\n💰 Precio: $10"
+                        "text": "📌 Incluye una rosa importada de Colombia y una caja de chocolates Ferrero Rocher.\n\n🎁 Un detalle perfecto para San Valentín. 💖\n\n💵 Precio: $10",
                     },
-                    "footer": { "text": "¿Quieres comprar este producto?" },
+                    "footer": {
+                        "text": "¿Quieres comprar este producto?"
+                    },
                     "action": {
                         "buttons": [
-                            { "type": "reply", "reply": { "id": "compra", "title": "🛒 Adquirir ahora" } }
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "compra",
+                                    "title": "🛒 adquirir ahora"
+                                }
+                            }
                         ]
                     }
                 }
             });
             break;
-        }
 
-        default: {
+        case text.includes("producto_2"):
             data = JSON.stringify({
                 "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": number,
+                "type": "interactive",
+                "interactive": {
+                    "type": "button",
+                    "header": {
+                        "type": "image",
+                        "image": {
+                            "link": "https://i.pinimg.com/236x/9f/52/01/9f52012882384f7e8d50c43dcb773084.jpg",
+                        }
+                    },
+                    "body": {
+                        "text": "📌 Incluye un peluche de alta calidad y una botella de vino *Casillero del Diablo*.\n\n🎁 Perfecto para una velada romántica. 🍷💘\n\n💵 Precio: $10",
+                    },
+                    "footer": {
+                        "text": "¿Quieres comprar este producto?"
+                    },
+                    "action": {
+                        "buttons": [
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "compra",
+                                    "title": "🛒 adquirir ahora"
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+            break;
+
+        case text.includes("producto_3"):
+            data = JSON.stringify({
+                "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": number,
+                "type": "interactive",
+                "interactive": {
+                    "type": "button",
+                    "header": {
+                        "type": "image",
+                        "image": {
+                            "link": "https://i.pinimg.com/474x/d9/f7/d4/d9f7d4a546537df69ba0d5ded381ea49.jpg",
+                        }
+                    },
+                    "body": {
+                        "text": "📌 Incluye un elegante diario de cuero y un lapicero metálico.\n\n🎁 Ideal para quienes aman escribir. 📝✨\n\n💵 Precio: $10",
+                    },
+                    "footer": {
+                        "text": "¿Quieres comprar este producto?"
+                    },
+                    "action": {
+                        "buttons": [
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "compra",
+                                    "title": "🛒 adquirir ahora"
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+            break;
+
+        default:
+            data = JSON.stringify({
+                "messaging_product": "whatsapp",    
                 "recipient_type": "individual",
                 "to": number,
                 "type": "text",
                 "text": {
                     "preview_url": false,
-                    "body": "🚀 Hola, visita mi web https://portafoliu.vercel.app para más información. Escribe *boton* para más opciones."
+                    "body": "🚀 Hola, visita mi web https://portafoliu.vercel.app para mas información. Escribe *boton* o *lista* para mas opciones. \n \n📌Por favor, ingresa un numero #️⃣ para recibir información.\n \n1️⃣. Información del bot. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en pdf. 📄\n4️⃣. Audio explicando bot. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con Heynar. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜"
                 }
             });
             break;
-        }
     }
 
     const option = {
-        host: "graph.facebook.com",
-        path: "/v21.0/586933011161982/messages",
-        method: "POST",
-        body: data,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer EAAGXpgKoZBOgBO5bcgM4JAZBDTQZCyolZCDpBQVp2l9kLZC4cubvR2OOy4RGBGj98nJCEOcCFAFaz7IDEJcZA228IC8ewuAm0xbheos80Pe6KEJOnTLCrQJBLSJN7K1O7UlHjMBOrsFHsZCNrKAEbPYWuMtne0x2jgocspAto9QPLwoAR6oc1kvRZCQAZAKia8CfqQQZDZD"
+        host : "graph.facebook.com",
+        path : "/v21.0/586933011161982/messages",
+        method : "POST",
+        body : data,
+        headers : {
+            "Content-Type" : "application/json",
+            Authorization :"Bearer EAAGXpgKoZBOgBO5bcgM4JAZBDTQZCyolZCDpBQVp2l9kLZC4cubvR2OOy4RGBGj98nJCEOcCFAFaz7IDEJcZA228IC8ewuAm0xbheos80Pe6KEJOnTLCrQJBLSJN7K1O7UlHjMBOrsFHsZCNrKAEbPYWuMtne0x2jgocspAto9QPLwoAR6oc1kvRZCQAZAKia8CfqQQZDZD"
         }
     };
 
@@ -120,10 +232,6 @@ export function EnviarMensajeWhastapp(text, number) {
     req.end();
 }
 
-
-
-
-// 
 // // import { request } from "https";
 
 // const clientes = {}; // Almacena los datos temporales de los clientes
