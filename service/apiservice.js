@@ -31,7 +31,9 @@ export function EnviarMensajeWhastapp(text, number) {
                 "body": {
                     "text": "Selecciona un producto:"
                 },
-                
+                "footer": {
+                    "text": "Selecciona una de las opciones"
+                },
                 "action" :{
                     "buttons": [
                         {
