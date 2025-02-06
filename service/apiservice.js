@@ -42,10 +42,10 @@ export function EnviarMensajeWhastapp  (text, number) {
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": "Selecciona el de su interes"
+                    "text": "Select one of these options"
                 },
                 "footer": {
-                    "text": "Selecciona una de las opciones"
+                    "text": "Select one of these options"
                 },
                 "action" :{
                     "buttons": [
@@ -114,6 +114,20 @@ export function EnviarMensajeWhastapp  (text, number) {
                                     "id": "compra",
                                     "title": "🛒 adquirir ahora"
                                 }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto2",
+                                    "title":"Puppy Love 🧸"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto3",
+                                    "title":"Sweetheart 🧸 Brown"
+                                }
                             }
                         ]
                     }
@@ -146,6 +160,20 @@ export function EnviarMensajeWhastapp  (text, number) {
                                 "reply": {
                                     "id": "compra",
                                     "title": "🛒 adquirir ahora"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto1",
+                                    "title":"Sweetheart 🧸 White"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto3",
+                                    "title":"Sweetheart 🧸 Brown"
                                 }
                             }
                         ]
@@ -180,7 +208,21 @@ export function EnviarMensajeWhastapp  (text, number) {
                                     "id": "compra",
                                     "title": "🛒 adquirir ahora"
                                 }
-                            }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto1",
+                                    "title":"Sweetheart 🧸 White"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"producto2",
+                                    "title":"Puppy Love 🧸"
+                                }
+                            },
                         ]
                     }
                 }
@@ -207,10 +249,10 @@ export function EnviarMensajeWhastapp  (text, number) {
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": "👋 ¡Hola! Bienvenido Quieres conocer muestros productos?"
+                    "text": "👋 Hello! Welcome! Would you like to know more about our products?"
                 },
                 "footer": {
-                    "text": "Selecciona una de las opciones"
+                    "text": "Select one of the options"
                 },
                 "action" :{
                     "buttons": [
@@ -218,7 +260,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             "type": "reply",
                             "reply":{
                                 "id":"btnsi",
-                                "title":"Si"
+                                "title":"Yes"
                             }
                         },
                         {
