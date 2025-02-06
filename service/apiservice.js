@@ -43,21 +43,21 @@ export function EnviarMensajeWhastapp(text, number) {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto_1",
-                                    "title": "🌹 Rosa con choco"
+                                    "title": "🌹 Rosa con chocolates"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto_2",
-                                    "title": "🧸 Peluc con vino"
+                                    "title": "🧸 Peluche con vino"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto_3",
-                                    "title": "✏️ Lapiz y diario"
+                                    "title": "✏️ Lapicero y diario"
                                 }
                             }
                         ]
@@ -186,6 +186,11 @@ function retrocederPaso(number) {
 }
 
 function sendMessage(number, message) {
+    // Verifica si el mensaje es un objeto (como los botones interactivos)
+    if (typeof message !== "string") {
+        message = JSON.stringify(message);
+    }
+
     const data = JSON.stringify({
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
