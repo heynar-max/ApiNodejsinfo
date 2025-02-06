@@ -29,7 +29,7 @@ export function EnviarMensajeWhastapp(text, number) {
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": "Selecciona un producto:"
+                    "text": "¿Confirmas tu registro?"
                 },
                 "footer": {
                     "text": "Selecciona una de las opciones"
@@ -39,22 +39,22 @@ export function EnviarMensajeWhastapp(text, number) {
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"producto_1",
-                                "title":"🌹 Rosa con chocolates"
+                                "id":"btnsi",
+                                "title":"Si"
                             }
                         },
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"producto_2",
-                                "title":"🧸 Peluche con vino"
+                                "id":"btnno",
+                                "title":"No"
                             }
                         },
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"producto_3",
-                                "title":"✏️ Lapicero y diario"
+                                "id":"btntalvez",
+                                "title":"Tal vez"
                             }
                         }
                     ]
