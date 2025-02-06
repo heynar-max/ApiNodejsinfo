@@ -88,7 +88,7 @@ export function EnviarMensajeWhastapp(text, number) {
                         {
                             "type": "reply",
                             "reply": {
-                                "id": product.id,
+                                "id": "compra",
                                 "title": "🛒 adquirir ahora"
                             }
                         }
@@ -122,7 +122,7 @@ export function EnviarMensajeWhastapp(text, number) {
                         {
                             "type": "reply",
                             "reply": {
-                                "id": product.id,
+                                "id": "compra",
                                 "title": "🛒 adquirir ahora"
                             }
                         }
@@ -156,7 +156,7 @@ export function EnviarMensajeWhastapp(text, number) {
                         {
                             "type": "reply",
                             "reply": {
-                                "id": product.id,
+                                "id": "compra",
                                 "title": "🛒 adquirir ahora"
                             }
                         }
