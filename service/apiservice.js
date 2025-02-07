@@ -10,7 +10,7 @@ export function EnviarMensajeWhastapp(text, number) {
 
     // Verificar si el cliente ya ha proporcionado su nombre
     if (!conversationState[number]?.name) {
-        // Si el usuario escribe cualquier palabra (incluyendo "hola"), siempre mostrará el mensaje de bienvenida
+        // Si el usuario escribe cualquier cosa antes de dar su nombre, se le pedirá su nombre
         data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -22,22 +22,22 @@ export function EnviarMensajeWhastapp(text, number) {
             }
         });
 
-        // Asegurar que el estado de espera de nombre se active
+        // Activar el estado de espera de nombre
         conversationState[number] = { waitingForName: true };
-    } else if (conversationState[number]?.waitingForName) {
+    } else if (conversationState[number].waitingForName) {
         // Almacenar el nombre proporcionado por el cliente
         conversationState[number].name = text;
         conversationState[number].waitingForName = false;
 
+        // Enviar mensaje con botones de opciones después de dar su nombre
         data = JSON.stringify({
             "messaging_product": "whatsapp",
-            "recipient_type": "individual",
             "to": number,
             "type": "interactive",
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": `👋 ¡Hola, ${text}! Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?`
+                    "text": `👋 ¡Hola! ${text} Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?`
                 },
                 "footer": {
                     "text": "Selecciona una de las opciones"
