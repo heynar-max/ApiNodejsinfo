@@ -48,7 +48,7 @@ export function EnviarMensajeWhastapp(text, number) {
                 "interactive": {
                     "type": "button",
                     "body": {
-                        "text": "👋 ¡Hola! Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?"
+                        "text": `👋 ¡Hola! ${text} Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?`
                     },
                     "footer": {
                         "text": "Selecciona una de las opciones"
