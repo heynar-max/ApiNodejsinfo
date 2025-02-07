@@ -3,7 +3,7 @@ import { request } from "https";
 // Objeto para almacenar el estado de la conversación por número de teléfono
 const conversationState = {};
 
-export function EnviarMensajeWhatsapp(text, number) {
+export function EnviarMensajeWhastapp(text, number) {
     text = text.toLowerCase();
 
     let data;
