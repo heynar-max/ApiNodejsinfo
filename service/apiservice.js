@@ -10,72 +10,60 @@ export function EnviarMensajeWhastapp(text, number) {
 
     // Verificar si el cliente ya ha proporcionado su nombre
     if (!conversationState[number]?.name) {
-        if (text.includes("hola")) {
-            data = JSON.stringify({
-                "messaging_product": "whatsapp",
-                "recipient_type": "individual",
-                "to": number,
-                "type": "text",
-                "text": {
-                    "preview_url": false,
-                    "body": "¡Hola! 👋 ¿Cómo te llamas?"
-                }
-            });
+        // Si el usuario escribe cualquier palabra (incluyendo "hola"), siempre mostrará el mensaje de bienvenida
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "👋 ¡Hola! Bienvenido/a a nuestra tienda de San Valentín ❤️. Por favor, dime tu *nombre* para continuar."
+            }
+        });
 
-            // Guardar el estado de la conversación
-            conversationState[number] = { waitingForName: true };
-        } else if (conversationState[number]?.waitingForName) {
-            // Almacenar el nombre proporcionado por el cliente
-            conversationState[number].name = text;
-            conversationState[number].waitingForName = false;
+        // Asegurar que el estado de espera de nombre se active
+        conversationState[number] = { waitingForName: true };
+    } else if (conversationState[number]?.waitingForName) {
+        // Almacenar el nombre proporcionado por el cliente
+        conversationState[number].name = text;
+        conversationState[number].waitingForName = false;
 
-            data = JSON.stringify({
-                "messaging_product": "whatsapp",
-                "recipient_type": "individual",
-                "to": number,
-                "type": "text",
-                "text": {
-                    "preview_url": false,
-                    "body": `¡Mucho gusto, ${text}! 😊`
-                }
-            });
-
-            // Después de saludar, mostrar las opciones de productos
-            data = JSON.stringify({
-                "messaging_product": "whatsapp",
-                "to": number,
-                "type": "interactive",
-                "interactive": {
-                    "type": "button",
-                    "body": {
-                        "text": `👋 ¡Hola! ${text} Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?`
-                    },
-                    "footer": {
-                        "text": "Selecciona una de las opciones"
-                    },
-                    "action": {
-                        "buttons": [
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "btnsi",
-                                    "title": "Sí"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "btnno",
-                                    "title": "No"
-                                }
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": `👋 ¡Hola, ${text}! Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?`
+                },
+                "footer": {
+                    "text": "Selecciona una de las opciones"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "btnsi",
+                                "title": "Sí"
                             }
-                        ]
-                    }
+                        },
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "btnno",
+                                "title": "No"
+                            }
+                        }
+                    ]
                 }
-            });
-        }
+            }
+        });
     } else {
-        // Continuar con la lógica existente si el nombre ya fue proporcionado
+        // Lógica para continuar la conversación
         if (text.includes("gracias")) {
             data = JSON.stringify({
                 "messaging_product": "whatsapp",
@@ -106,10 +94,10 @@ export function EnviarMensajeWhastapp(text, number) {
                 "interactive": {
                     "type": "button",
                     "body": {
-                        "text": "Select one of these options"
+                        "text": "Selecciona uno de estos productos:"
                     },
                     "footer": {
-                        "text": "Select one of these options"
+                        "text": "Selecciona una opción"
                     },
                     "action": {
                         "buttons": [
@@ -117,21 +105,21 @@ export function EnviarMensajeWhastapp(text, number) {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto1",
-                                    "title": "Sweetheart 🧸 White"
+                                    "title": "Rosa con chocolates 🌹🍫"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto2",
-                                    "title": "Puppy Love 🧸"
+                                    "title": "Peluche con vino 🧸🍷"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply": {
                                     "id": "producto3",
-                                    "title": "Sweetheart 🧸 Brown"
+                                    "title": "Lapicero y diario ✍📖"
                                 }
                             }
                         ]
@@ -154,46 +142,10 @@ export function EnviarMensajeWhastapp(text, number) {
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
                 "to": number,
-                "type": "interactive",
-                "interactive": {
-                    "type": "button",
-                    "header": {
-                        "type": "image",
-                        "image": {
-                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879497/kwocjvsoayoz8wsdawz8.jpg",
-                        }
-                    },
-                    "body": {
-                        "text": "📌 Includes Sweetheart Teddy White - 12 Ferrero Rocher - 1 Heart Balloon - 1 Rice Krispies Treats 2.2 oz.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $50",
-                    },
-                    "footer": {
-                        "text": "¿Quieres comprar este producto?"
-                    },
-                    "action": {
-                        "buttons": [
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "compra",
-                                    "title": "🛒 adquirir ahora"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "producto2",
-                                    "title": "Puppy Love 🧸"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "producto3",
-                                    "title": "Sweetheart 🧸 Brown"
-                                }
-                            }
-                        ]
-                    }
+                "type": "text",
+                "text": {
+                    "preview_url": false,
+                    "body": "🌹 Rosa con chocolates 🍫\n💵 Precio: $10\n📦 Incluye: 1 rosa + chocolates\n\nPara comprar, responde 'comprar'."
                 }
             });
         } else if (text.includes("producto2")) {
@@ -201,46 +153,10 @@ export function EnviarMensajeWhastapp(text, number) {
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
                 "to": number,
-                "type": "interactive",
-                "interactive": {
-                    "type": "button",
-                    "header": {
-                        "type": "image",
-                        "image": {
-                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879497/wlasox3w4jxlxgvjiycj.jpg",
-                        }
-                    },
-                    "body": {
-                        "text": "📌 Includes Pirouline - 2 Golden Oreos Vanilla 22g - 12 Ferrero Rocher - 1 Heart Balloon - 1 Business card.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $40",
-                    },
-                    "footer": {
-                        "text": "¿Quieres comprar este producto?"
-                    },
-                    "action": {
-                        "buttons": [
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "compra",
-                                    "title": "🛒 adquirir ahora"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "producto1",
-                                    "title": "Sweetheart 🧸 White"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "producto3",
-                                    "title": "Sweetheart 🧸 Brown"
-                                }
-                            }
-                        ]
-                    }
+                "type": "text",
+                "text": {
+                    "preview_url": false,
+                    "body": "🧸 Peluche con vino 🍷\n💵 Precio: $20\n📦 Incluye: 1 peluche + 1 botella de vino\n\nPara comprar, responde 'comprar'."
                 }
             });
         } else if (text.includes("producto3")) {
@@ -248,49 +164,13 @@ export function EnviarMensajeWhastapp(text, number) {
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
                 "to": number,
-                "type": "interactive",
-                "interactive": {
-                    "type": "button",
-                    "header": {
-                        "type": "image",
-                        "image": {
-                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879699/nlsrnjdnxtzcbqnc4o27.jpg",
-                        }
-                    },
-                    "body": {
-                        "text": "📌 Includes Sweetheart Teddy Brown - 6 Ferrero Rocher - 1 Heart Balloon - 1 Business card.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $50",
-                    },
-                    "footer": {
-                        "text": "¿Quieres comprar este producto?"
-                    },
-                    "action": {
-                        "buttons": [
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "compra",
-                                    "title": "🛒 adquirir ahora"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "producto1",
-                                    "title": "Sweetheart 🧸 White"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "producto2",
-                                    "title": "Puppy Love 🧸"
-                                }
-                            },
-                        ]
-                    }
+                "type": "text",
+                "text": {
+                    "preview_url": false,
+                    "body": "✍ Lapicero y diario 📖\n💵 Precio: $5\n📦 Incluye: 1 lapicero + 1 diario\n\nPara comprar, responde 'comprar'."
                 }
             });
-        } else if (text.includes("btncomprar")) {
+        } else if (text.includes("comprar")) {
             data = JSON.stringify({
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -298,40 +178,7 @@ export function EnviarMensajeWhastapp(text, number) {
                 "type": "text",
                 "text": {
                     "preview_url": false,
-                    "body": "Gracias por comprar."
-                }
-            });
-        } else {
-            data = JSON.stringify({
-                "messaging_product": "whatsapp",
-                "to": number,
-                "type": "interactive",
-                "interactive": {
-                    "type": "button",
-                    "body": {
-                        "text": "👋 ¡Hola! Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?"
-                    },
-                    "footer": {
-                        "text": "Selecciona una de las opciones"
-                    },
-                    "action": {
-                        "buttons": [
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "btnsi",
-                                    "title": "Sí"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply": {
-                                    "id": "btnno",
-                                    "title": "No"
-                                }
-                            },
-                        ]
-                    }
+                    "body": "¡Gracias por tu compra! 🎉 En breve nos pondremos en contacto contigo para coordinar la entrega. 💖"
                 }
             });
         }
