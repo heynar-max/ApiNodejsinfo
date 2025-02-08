@@ -4,12 +4,22 @@ import nodemailer from "nodemailer";
 const productosInfo = {
     "Sweetheart 🧸 White": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879497/kwocjvsoayoz8wsdawz8.jpg",
     "Puppy Love 🧸": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879497/wlasox3w4jxlxgvjiycj.jpg",
-    "Sweetheart 🧸 Brown": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879699/nlsrnjdnxtzcbqnc4o27.jpg"
+    "Sweetheart 🧸 Brown": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879699/nlsrnjdnxtzcbqnc4o27.jpg",
+    "Mani Planters": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/ibim3vm1n9dna7raqd62.jpg",
 };
 
 export async function EnviarCorreoCompra(number, producto, nombre, ciudad) {
     const fechaCompra = new Date().toLocaleString("es-ES", { timeZone: "America/Bogota" });
-    const imagenProducto = productosInfo[producto] || "https://example.com/default-image.jpg"; // Imagen por defecto si no encuentra el producto
+    
+     // Construir el HTML de los productos
+        const productosHTML = productos.map(producto => {
+        const imagenProducto = productosInfo[producto] || "https://example.com/default-image.jpg"; // Imagen por defecto si no se encuentra
+        return `
+            <p><strong>🛒 Producto:</strong> ${producto}</p>
+            <img src="${imagenProducto}" alt="${producto}" width="200">
+            <hr>
+        `;
+    }).join(""); // Unir todos los productos en un solo string HTML
 
     const transporter = nodemailer.createTransport({
         service: "gmail",

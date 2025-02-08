@@ -169,7 +169,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             {
                                 "type": "reply",
                                 "reply": {
-                                    "id": "compra",
+                                    "id": "adquicompra",
                                     "title": "🛒 adquirir ahora"
                                 }
                             },
@@ -217,7 +217,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             {
                                 "type": "reply",
                                 "reply": {
-                                    "id": "compra",
+                                    "id": "adquicompra",
                                     "title": "🛒 adquirir ahora"
                                 }
                             },
@@ -265,7 +265,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             {
                                 "type": "reply",
                                 "reply": {
-                                    "id": "compra",
+                                    "id": "adquicompra",
                                     "title": "🛒 adquirir ahora"
                                 }
                             },
@@ -287,6 +287,177 @@ export function EnviarMensajeWhastapp  (text, number) {
                     }
                 }
             });
+    }else if(text.includes("adquicompra")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": number,
+                "type": "interactive",
+                "interactive": {
+                    "type": "button",
+                    "header": {
+                        "type": "image",
+                        "image": {
+                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739047274/wievcbvgb4hfvmkraoby.png",
+                        }
+                    },
+                    "body": {
+                        "text": "📌 Te gustaria adicionar un producto más?",
+                    },
+                    "footer": {
+                        "text": "¿escoge el de su interes?"
+                    },
+                    "action": {
+                        "buttons": [
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "adici",
+                                    "title": "✅ Si"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"compra",
+                                    "title":"❌ No"
+                                }
+                            },
+                        ]
+                    }
+                }
+            });
+            
+    }else if(text.includes("adici")){
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type":"list",
+                "body":{
+                    "text":"Selecciona algun producto"
+                },
+                "footer":{
+                    "text":"Selecciona el de su interes"
+                },
+                "action":{
+                    "button":"Ver opciones",
+                    "sections":[
+                        {
+                            "title":"Productos de $1.5",
+                            "rows":[
+                                {
+                                    "id":"adicional1",
+                                    "title":"Mani Planters",
+                                    "description":"Mani Planters 6oz sal y vinagre"
+                                },
+                                {
+                                    "id":"adicional2",
+                                    "title":"Oreo mini",
+                                    "description":"Oreo mini golden 3oz"
+                                },
+                                {
+                                    "id":"adicional3",
+                                    "title":"5 Mounds",
+                                    "description":"5 Mounds 3oz"
+                                },
+                                {
+                                    "id":"adicional4",
+                                    "title":"M & M",
+                                    "description":"M & M  3.1oz"
+                                },
+                                {
+                                    "id":"adicional5",
+                                    "title":"Rice Krispies",
+                                    "description":"Rice Krispies 2.2oz "
+                                }
+                            ]
+                        },
+                        {
+                            "title":"Salir, terminar compra",
+                            "rows":[
+                                {
+                                    "id":"compra",
+                                    "title":"compra",
+                                    "description":"❌ terminar compra."
+                                },
+                            ]
+                        }
+                    ]
+                }
+            }
+        });
+    }else if(text.includes("adicional1")){
+        userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": number,
+                "type": "interactive",
+                "interactive": {
+                    "type": "button",
+                    "header": {
+                        "type": "image",
+                        "image": {
+                            "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/ibim3vm1n9dna7raqd62.jpg",
+                        }
+                    },
+                    "body": {
+                        "text": "📌 Includes mani planters sea salt & vinegar .\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+                    },
+                    "footer": {
+                        "text": "¿Quieres comprar este producto?"
+                    },
+                    "action": {
+                        "buttons": [
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "adquicompra",
+                                    "title": "🛒 agregar ahora"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"adicional2",
+                                    "title":"Oreo mini"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"adicional3",
+                                    "title":"5 Mounds"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"adicional4",
+                                    "title":"M & M"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"adicional5",
+                                    "title":"Rice Krispies"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply":{
+                                    "id":"compra",
+                                    "title":"❌ terminar compra"
+                                }
+                            },
+                        ]
+                    }
+                }
+            });
+
     }else if (text.includes("compra")) {
         let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
         let nombreComprador = userState[number]?.name || "No especificado";
@@ -300,7 +471,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             "type": "text",
             "text": {
                 "preview_url": false,
-                "body": "¡Genial! Para completar tu compra, ¿en qué ciudad te encuentras? 🌍"
+                "body": "¡Genial! Para completar tu compra, ¿en qué domicilio donde te encuentras? 🌍"
             }
         });
     } else if (userState[number]?.step === "esperando_ciudad") {
@@ -345,13 +516,69 @@ export function EnviarMensajeWhastapp  (text, number) {
 };
 
 // import { request } from "https";
+// import { EnviarCorreoCompra } from "./mailService.js";
+
+// const userState = {}; // Para almacenar el estado del usuario
 
 // export function EnviarMensajeWhastapp  (text, number) {
     
 //     text = text.toLowerCase();
 
+//     if (!userState[number]) {
+//         userState[number] = { stage: "ask_name" };
+//     }
+
 //     let data;
-//     if(text.includes("gracias")) {
+
+//     if (userState[number].stage === "ask_name") {
+//         userState[number].stage = "greet";
+//         data = JSON.stringify({
+//             "messaging_product": "whatsapp",
+//             "recipient_type": "individual",
+//             "to": number,
+//             "type": "text",
+//             "text": {
+//                 "preview_url": false,
+//                 "body": "¡Hola! 😊 Antes de continuar, ¿puedes decirme tu nombre?"
+//             }
+//         });
+//     } else if (userState[number].stage === "greet") {
+//         userState[number].name = text;
+//         userState[number].stage = "product_selection";
+//         data = JSON.stringify({
+//             "messaging_product": "whatsapp",
+//             "to": number,
+//             "type": "interactive",
+//             "interactive": {
+//                 "type": "button",
+//                 "body": {
+//                     "text": `👋 ¡Hola ${text}! Bienvenido. ¿Te gustaría conocer más sobre nuestros productos?`
+//                 },
+//                 "footer": {
+//                     "text": "Selecciona una de las opciones"
+//                 },
+//                 "action": {
+//                     "buttons": [
+//                         {
+//                             "type": "reply",
+//                             "reply": {
+//                                 "id": "btnsi",
+//                                 "title": "Sí"
+//                             }
+//                         },
+//                         {
+//                             "type": "reply",
+//                             "reply": {
+//                                 "id": "btnno",
+//                                 "title": "No"
+//                             }
+//                         }
+//                     ]
+//                 }
+//             }
+//         });
+
+//     }else if(text.includes("gracias")) {
 //         data = JSON.stringify({
             
 //             "messaging_product": "whatsapp",
@@ -433,6 +660,7 @@ export function EnviarMensajeWhastapp  (text, number) {
 //             }
 //         });
 //     }else if(text.includes("producto1")){
+//         userState[number].lastProduct = "Sweetheart 🧸 White";  // ✅ Guardar el producto
 //         data = JSON.stringify({
 //             "messaging_product": "whatsapp",
 //                 "recipient_type": "individual",
@@ -480,6 +708,7 @@ export function EnviarMensajeWhastapp  (text, number) {
 //                 }
 //             });
 //     }else if(text.includes("producto2")){
+//         userState[number].lastProduct = "Puppy Love 🧸";  // ✅ Guardar el producto
 //         data = JSON.stringify({
 //             "messaging_product": "whatsapp",
 //                 "recipient_type": "individual",
@@ -527,6 +756,7 @@ export function EnviarMensajeWhastapp  (text, number) {
 //                 }
 //             });
 //     }else if(text.includes("producto3")){
+//         userState[number].lastProduct = "Sweetheart 🧸 Brown";  // ✅ Guardar el producto
 //         data = JSON.stringify({
 //             "messaging_product": "whatsapp",
 //                 "recipient_type": "individual",
@@ -573,7 +803,12 @@ export function EnviarMensajeWhastapp  (text, number) {
 //                     }
 //                 }
 //             });
-//     }else if(text.includes("btncomprar")){
+//     }else if (text.includes("compra")) {
+//         let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
+//         let nombreComprador = userState[number]?.name || "No especificado";
+    
+//         // Preguntar por la ciudad
+//         userState[number].step = "esperando_ciudad";
 //         data = JSON.stringify({
 //             "messaging_product": "whatsapp",
 //             "recipient_type": "individual",
@@ -581,46 +816,27 @@ export function EnviarMensajeWhastapp  (text, number) {
 //             "type": "text",
 //             "text": {
 //                 "preview_url": false,
-//                 "body": "gracias por comprar. "
+//                 "body": "¡Genial! Para completar tu compra, ¿en qué domicilio donde te encuentras? 🌍"
 //             }
 //         });
+//     } else if (userState[number]?.step === "esperando_ciudad") {
+//         userState[number].ciudad = text;
 
-
-//     }else{
+//         // Enviar correo con la compra, incluyendo nombre y ciudad
+//         EnviarCorreoCompra(number, userState[number].lastProduct, userState[number].name, userState[number].ciudad);
+    
 //         data = JSON.stringify({
-            
 //             "messaging_product": "whatsapp",
+//             "recipient_type": "individual",
 //             "to": number,
-//             "type": "interactive",
-//             "interactive": {
-//                 "type": "button",
-//                 "body": {
-//                     "text": "👋 Hello! Welcome! Would you like to know more about our products?"
-//                 },
-//                 "footer": {
-//                     "text": "Select one of the options"
-//                 },
-//                 "action" :{
-//                     "buttons": [
-//                         {
-//                             "type": "reply",
-//                             "reply":{
-//                                 "id":"btnsi",
-//                                 "title":"Yes"
-//                             }
-//                         },
-//                         {
-//                             "type": "reply",
-//                             "reply":{
-//                                 "id":"btnno",
-//                                 "title":"No"
-//                             }
-//                         },
-//                     ]
-//                 }
+//             "type": "text",
+//             "text": {
+//                 "preview_url": false,
+//                 "body": "Gracias por tu compra. 📦 Te contactaremos pronto para coordinar la entrega. 💖"
 //             }
-            
 //         });
+//         // Resetear estado del usuario
+//         delete userState[number]
 //     }
 
 //     const option = {
