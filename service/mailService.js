@@ -45,5 +45,3 @@ export async function EnviarCorreoCompra(number, producto) {
     console.log("Producto recibido:", producto);
 console.log("Imagen del producto:", imagenProducto);
 }
-console.log("Producto recibido:", producto);
-console.log("Imagen del producto:", imagenProducto);
