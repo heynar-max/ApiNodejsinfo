@@ -348,7 +348,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             "title":"Productos de $1.5",
                             "rows":[
                                 {
-                                    "id":"producto3",
+                                    "id":"producto4",
                                     "title":"Mani Planters",
                                     "description":"Mani Planters 6oz sal y vinagre"
                                 },
@@ -388,7 +388,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 }
             }
         });
-    }else if(text.includes("producto3")){
+    }else if(text.includes("producto4")){
         userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
         data = JSON.stringify({
             "messaging_product": "whatsapp",
@@ -404,7 +404,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                         }
                     },
                     "body": {
-                        "text": "📌 Includes mani planters sea salt & vinegar .\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+                        "text": "📌 Includes Sweetheart Teddy Brown - 6 Ferrero Rocher - 1 Heart Balloon - 1 Business card.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $50",
                     },
                     "footer": {
                         "text": "¿Quieres comprar este producto?"
@@ -415,48 +415,96 @@ export function EnviarMensajeWhastapp  (text, number) {
                                 "type": "reply",
                                 "reply": {
                                     "id": "adquicompra",
-                                    "title": "🛒 agregar ahora"
+                                    "title": "🛒 adquirir ahora"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply":{
-                                    "id":"adicional2",
-                                    "title":"Oreo mini"
+                                    "id":"producto1",
+                                    "title":"Sweetheart 🧸 White"
                                 }
                             },
                             {
                                 "type": "reply",
                                 "reply":{
-                                    "id":"adicional3",
-                                    "title":"5 Mounds"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply":{
-                                    "id":"adicional4",
-                                    "title":"M & M"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply":{
-                                    "id":"adicional5",
-                                    "title":"Rice Krispies"
-                                }
-                            },
-                            {
-                                "type": "reply",
-                                "reply":{
-                                    "id":"compra",
-                                    "title":"❌ terminar compra"
+                                    "id":"producto2",
+                                    "title":"Puppy Love 🧸"
                                 }
                             },
                         ]
                     }
                 }
             });
+    // }else if(text.includes("producto3")){
+    //     userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
+    //     data = JSON.stringify({
+    //         "messaging_product": "whatsapp",
+    //             "recipient_type": "individual",
+    //             "to": number,
+    //             "type": "interactive",
+    //             "interactive": {
+    //                 "type": "button",
+    //                 "header": {
+    //                     "type": "image",
+    //                     "image": {
+    //                         "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/ibim3vm1n9dna7raqd62.jpg",
+    //                     }
+    //                 },
+    //                 "body": {
+    //                     "text": "📌 Includes mani planters sea salt & vinegar .\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+    //                 },
+    //                 "footer": {
+    //                     "text": "¿Quieres comprar este producto?"
+    //                 },
+    //                 "action": {
+    //                     "buttons": [
+    //                         {
+    //                             "type": "reply",
+    //                             "reply": {
+    //                                 "id": "adquicompra",
+    //                                 "title": "🛒 agregar ahora"
+    //                             }
+    //                         },
+    //                         {
+    //                             "type": "reply",
+    //                             "reply":{
+    //                                 "id":"adicional2",
+    //                                 "title":"Oreo mini"
+    //                             }
+    //                         },
+    //                         {
+    //                             "type": "reply",
+    //                             "reply":{
+    //                                 "id":"adicional3",
+    //                                 "title":"5 Mounds"
+    //                             }
+    //                         },
+    //                         {
+    //                             "type": "reply",
+    //                             "reply":{
+    //                                 "id":"adicional4",
+    //                                 "title":"M & M"
+    //                             }
+    //                         },
+    //                         {
+    //                             "type": "reply",
+    //                             "reply":{
+    //                                 "id":"adicional5",
+    //                                 "title":"Rice Krispies"
+    //                             }
+    //                         },
+    //                         {
+    //                             "type": "reply",
+    //                             "reply":{
+    //                                 "id":"compra",
+    //                                 "title":"❌ terminar compra"
+    //                             }
+    //                         },
+    //                     ]
+    //                 }
+    //             }
+    //         });
 
     }else if (text.includes("compra")) {
         let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
