@@ -9,7 +9,7 @@ export function EnviarMensajeWhastapp  (text, number) {
     text = text.toLowerCase();
 
     if (!userState[number]) {
-        userState[number] = { stage: "ask_name" };
+        userState[number] = { stage: "ask_name", productos: [] };
     }
 
     let data;
@@ -144,7 +144,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
     }else if(text.includes("producto1")){
-        userState[number].lastProduct = "Sweetheart 🧸 White";  // ✅ Guardar el producto
+        userState[number].productos = [...userState[number].productos, "Sweetheart 🧸 White"]; // Agregar producto usando spread operator
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -389,7 +389,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
     }else if(text.includes("adi1")){
-        userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
+        userState[number].productos = [...userState[number].productos, "Mani Planters"]; // Agregar producto usando spread operator
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -436,75 +436,6 @@ export function EnviarMensajeWhastapp  (text, number) {
                     }
                 }
             });
-    // }else if(text.includes("producto3")){
-    //     userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
-    //     data = JSON.stringify({
-    //         "messaging_product": "whatsapp",
-    //             "recipient_type": "individual",
-    //             "to": number,
-    //             "type": "interactive",
-    //             "interactive": {
-    //                 "type": "button",
-    //                 "header": {
-    //                     "type": "image",
-    //                     "image": {
-    //                         "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/ibim3vm1n9dna7raqd62.jpg",
-    //                     }
-    //                 },
-    //                 "body": {
-    //                     "text": "📌 Includes mani planters sea salt & vinegar .\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
-    //                 },
-    //                 "footer": {
-    //                     "text": "¿Quieres comprar este producto?"
-    //                 },
-    //                 "action": {
-    //                     "buttons": [
-    //                         {
-    //                             "type": "reply",
-    //                             "reply": {
-    //                                 "id": "adquicompra",
-    //                                 "title": "🛒 agregar ahora"
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "reply",
-    //                             "reply":{
-    //                                 "id":"adicional2",
-    //                                 "title":"Oreo mini"
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "reply",
-    //                             "reply":{
-    //                                 "id":"adicional3",
-    //                                 "title":"5 Mounds"
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "reply",
-    //                             "reply":{
-    //                                 "id":"adicional4",
-    //                                 "title":"M & M"
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "reply",
-    //                             "reply":{
-    //                                 "id":"adicional5",
-    //                                 "title":"Rice Krispies"
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "reply",
-    //                             "reply":{
-    //                                 "id":"compra",
-    //                                 "title":"❌ terminar compra"
-    //                             }
-    //                         },
-    //                     ]
-    //                 }
-    //             }
-    //         });
 
     }else if (text.includes("compra")) {
         let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
