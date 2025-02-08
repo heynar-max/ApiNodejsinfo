@@ -8,7 +8,7 @@ const productosInfo = {
     "Mani Planters": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/ibim3vm1n9dna7raqd62.jpg",
 };
 
-export async function EnviarCorreoCompra(number, producto, nombre, ciudad) {
+export async function EnviarCorreoCompra(number, productos, nombre, ciudad) {
     const fechaCompra = new Date().toLocaleString("es-ES", { timeZone: "America/Bogota" });
     
      // Construir el HTML de los productos
@@ -40,8 +40,8 @@ export async function EnviarCorreoCompra(number, producto, nombre, ciudad) {
             <p><strong>📞 Número de WhatsApp:</strong> ${number}</p>
             <p><strong>👤 Nombre:</strong> ${nombre || "No especificado"}</p>
             <p><strong>🌍 Dirección:</strong> ${ciudad || "No especificada"}</p>
-            <p><strong>🛒 Producto:</strong> ${producto}</p>
-            <img src="${imagenProducto}" alt="Producto comprado" width="200">
+            <h3>🛍 Productos comprados:</h3>
+            ${productosHTML}
             <p>Revisa WhatsApp para coordinar la entrega. 🚚</p>
         `
     };
