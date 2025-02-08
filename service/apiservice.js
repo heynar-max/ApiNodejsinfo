@@ -60,7 +60,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 }
             }
         });
-        
+
     }else if(text.includes("gracias")) {
         data = JSON.stringify({
             
@@ -283,7 +283,12 @@ export function EnviarMensajeWhastapp  (text, number) {
                     }
                 }
             });
-    }else if(text.includes("btncomprar")){
+    }else if (text.includes("compra")) {
+        let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
+    
+        // Enviar correo con la compra, incluyendo imagen y fecha
+        EnviarCorreoCompra(number, productoComprado);
+    
         data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -291,45 +296,8 @@ export function EnviarMensajeWhastapp  (text, number) {
             "type": "text",
             "text": {
                 "preview_url": false,
-                "body": "gracias por comprar. "
+                "body": "Gracias por tu compra. 📦 Te contactaremos pronto para coordinar la entrega. 💖"
             }
-        });
-
-
-    }else{
-        data = JSON.stringify({
-            
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "interactive",
-            "interactive": {
-                "type": "button",
-                "body": {
-                    "text": "👋 Hello! Welcome! Would you like to know more about our products?"
-                },
-                "footer": {
-                    "text": "Select one of the options"
-                },
-                "action" :{
-                    "buttons": [
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnsi",
-                                "title":"Yes"
-                            }
-                        },
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnno",
-                                "title":"No"
-                            }
-                        },
-                    ]
-                }
-            }
-            
         });
     }
 
