@@ -1,5 +1,6 @@
 
 import { request } from "https";
+import { EnviarCorreoCompra } from "./mailService.js";
 
 const userState = {}; // Para almacenar el estado del usuario
 
