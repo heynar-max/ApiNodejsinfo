@@ -348,7 +348,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             "title":"Productos de $1.5",
                             "rows":[
                                 {
-                                    "id":"producto4",
+                                    "id":"adicional1",
                                     "title":"Mani Planters",
                                     "description":"Mani Planters 6oz sal y vinagre"
                                 },
@@ -388,7 +388,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 }
             }
         });
-    }else if(text.includes("producto4")){
+    }else if(text.includes("adicional1")){
         userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
         data = JSON.stringify({
             "messaging_product": "whatsapp",
@@ -404,7 +404,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                         }
                     },
                     "body": {
-                        "text": "📌 Includes Sweetheart Teddy Brown - 6 Ferrero Rocher - 1 Heart Balloon - 1 Business card.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $50",
+                        "text": "📌 Includes mani planters sea salt & vinegar.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
                     },
                     "footer": {
                         "text": "¿Quieres comprar este producto?"
@@ -415,7 +415,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                                 "type": "reply",
                                 "reply": {
                                     "id": "adquicompra",
-                                    "title": "🛒 adquirir ahora"
+                                    "title": "🛒 agregar ahora"
                                 }
                             },
                             {
