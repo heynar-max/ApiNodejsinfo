@@ -10,9 +10,12 @@ const productosInfo = {
 
 export async function EnviarCorreoCompra(number, productos, nombre, ciudad) {
     const fechaCompra = new Date().toLocaleString("es-ES", { timeZone: "America/Bogota" });
+
+    // Asegurar que productos sea un array
+    const productosArray = Array.isArray(productos) ? productos : [productos]
     
      // Construir el HTML de los productos
-        const productosHTML = productos.map(producto => {
+        const productosHTML = productosArray.map(producto => {
         const imagenProducto = productosInfo[producto] || "https://example.com/default-image.jpg"; // Imagen por defecto si no se encuentra
         return `
             <p><strong>🛒 Producto:</strong> ${producto}</p>
