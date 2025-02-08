@@ -18,12 +18,14 @@ export async function EnviarCorreoCompra(number, producto) {
             pass: "htgk dttq kfaw beha"         // Usa una contraseña de aplicación si es Gmail
         }
     });
-
+    console.log("Producto recibido:", producto);
+    console.log("Imagen del producto:", imagenProducto);
     const mailOptions = {
         from: "heynar76max@gmail.com",
         to: "heynar76max@gmail.com",  // Donde recibirás la notificación
         subject: "Nueva Compra Recibida",
         html: `
+            <meta charset="UTF-8">
             <h2>📌 Nueva compra recibida</h2>
             <p><strong>📅 Fecha:</strong> ${fechaCompra}</p>
             <p><strong>📞 Número de WhatsApp:</strong> ${number}</p>
@@ -32,11 +34,16 @@ export async function EnviarCorreoCompra(number, producto) {
             <p>Revisa WhatsApp para coordinar la entrega. 🚚</p>
         `
     };
-
+    console.log("Producto recibido:", producto);
+    console.log("Imagen del producto:", imagenProducto);
     try {
         await transporter.sendMail(mailOptions);
         console.log("📧 Correo de compra enviado correctamente.");
     } catch (error) {
         console.error("❌ Error al enviar el correo:", error);
     }
+    console.log("Producto recibido:", producto);
+console.log("Imagen del producto:", imagenProducto);
 }
+console.log("Producto recibido:", producto);
+console.log("Imagen del producto:", imagenProducto);
