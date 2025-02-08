@@ -290,8 +290,47 @@ export function EnviarMensajeWhastapp  (text, number) {
     }else if (text.includes("compra")) {
         let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
     
-        // Enviar correo con la compra, incluyendo imagen y fecha
-        EnviarCorreoCompra(number, productoComprado);
+        // Preguntar por el nombre
+        userState[number].step = "esperando_nombre";
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": "¡Genial! Para completar tu compra, ¿puedes decirme tu nombre? 😊"
+            }
+        });
+    }
+
+    // Si el usuario responde con su nombre
+    else if (userState[number]?.step === "esperando_nombre") {
+        userState[number].nombre = text;
+        userState[number].step = "esperando_ciudad";
+
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": false,
+                "body": `Gracias, ${text}! Ahora dime, ¿cual es tu dirección de domicilio? 🌍`
+            }
+        });
+    }
+
+
+    // Si el usuario responde con un mensaje o dice "No"
+    else if (userState[number]?.step === "esperando_ciudad") {
+        let productoComprado = userState[number]?.lastProduct || "Producto desconocido";
+        let nombreComprador = userState[number]?.nombre || "No especificado";
+        let ciudadComprador = userState[number]?.ciudad || "No especificada";
+
+        // Enviar correo con la compra, incluyendo nombre, ciudad y mensaje
+        EnviarCorreoCompra(number, productoComprado, nombreComprador, ciudadComprador);
+
     
         data = JSON.stringify({
             "messaging_product": "whatsapp",

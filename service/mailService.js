@@ -7,7 +7,7 @@ const productosInfo = {
     "Sweetheart 🧸 Brown": "https://res.cloudinary.com/dzty81hol/image/upload/v1738879699/nlsrnjdnxtzcbqnc4o27.jpg"
 };
 
-export async function EnviarCorreoCompra(number, producto) {
+export async function EnviarCorreoCompra(number, producto, nombre, dirrecion) {
     const fechaCompra = new Date().toLocaleString("es-ES", { timeZone: "America/Bogota" });
     const imagenProducto = productosInfo[producto] || "https://example.com/default-image.jpg"; // Imagen por defecto si no encuentra el producto
 
@@ -29,6 +29,8 @@ export async function EnviarCorreoCompra(number, producto) {
             <h2>📌 Nueva compra recibida</h2>
             <p><strong>📅 Fecha:</strong> ${fechaCompra}</p>
             <p><strong>📞 Número de WhatsApp:</strong> ${number}</p>
+            <p><strong>👤 Nombre:</strong> ${nombre || "No especificado"}</p>
+            <p><strong>🌍 Ciudad:</strong> ${dirrecion || "No especificada"}</p>
             <p><strong>🛒 Producto:</strong> ${producto}</p>
             <img src="${imagenProducto}" alt="Producto comprado" width="200">
             <p>Revisa WhatsApp para coordinar la entrega. 🚚</p>
