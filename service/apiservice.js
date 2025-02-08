@@ -144,6 +144,7 @@ export function EnviarMensajeWhastapp  (text, number) {
             }
         });
     }else if(text.includes("producto1")){
+        userState[number].lastProduct = "Sweetheart 🧸 White";  // ✅ Guardar el producto
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -191,6 +192,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 }
             });
     }else if(text.includes("producto2")){
+        userState[number].lastProduct = "Puppy Love 🧸";  // ✅ Guardar el producto
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
@@ -238,6 +240,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 }
             });
     }else if(text.includes("producto3")){
+        userState[number].lastProduct = "Sweetheart 🧸 Brown";  // ✅ Guardar el producto
         data = JSON.stringify({
             "messaging_product": "whatsapp",
                 "recipient_type": "individual",
