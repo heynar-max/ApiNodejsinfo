@@ -348,7 +348,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                             "title":"Productos de $1.5",
                             "rows":[
                                 {
-                                    "id":"adicional1",
+                                    "id":"producto3",
                                     "title":"Mani Planters",
                                     "description":"Mani Planters 6oz sal y vinagre"
                                 },
@@ -388,7 +388,7 @@ export function EnviarMensajeWhastapp  (text, number) {
                 }
             }
         });
-    }else if(text.includes("adicional1")){
+    }else if(text.includes("producto3")){
         userState[number].lastProduct = "Mani Planters";  // ✅ Guardar el producto
         data = JSON.stringify({
             "messaging_product": "whatsapp",
