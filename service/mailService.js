@@ -18,8 +18,7 @@ export async function EnviarCorreoCompra(number, producto, nombre, ciudad) {
             pass: "htgk dttq kfaw beha"         // Usa una contraseña de aplicación si es Gmail
         }
     });
-    console.log("Producto recibido:", producto);
-    console.log("Imagen del producto:", imagenProducto);
+
     const mailOptions = {
         from: "heynar76max@gmail.com",
         to: "heynar76max@gmail.com",  // Donde recibirás la notificación
@@ -36,14 +35,12 @@ export async function EnviarCorreoCompra(number, producto, nombre, ciudad) {
             <p>Revisa WhatsApp para coordinar la entrega. 🚚</p>
         `
     };
-    console.log("Producto recibido:", producto);
-    console.log("Imagen del producto:", imagenProducto);
+    
     try {
         await transporter.sendMail(mailOptions);
         console.log("📧 Correo de compra enviado correctamente.");
     } catch (error) {
         console.error("❌ Error al enviar el correo:", error);
     }
-    console.log("Producto recibido:", producto);
-console.log("Imagen del producto:", imagenProducto);
+    
 }
