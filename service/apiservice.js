@@ -410,38 +410,17 @@ export function EnviarMensajeWhastapp(text, number) {
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"adi2",
-                                "title":"Oreo mini"
+                                "id":"adici",
+                                "title":"⬅️ Atrás"
                             }
                         },
                         {
                             "type": "reply",
                             "reply":{
-                                "id":"adi3",
-                                "title":"5 Mounds"
+                                "id":"compra",
+                                "title":"❌ terminar compra"
                             }
                         },
-                        // {
-                        //     "type": "reply",
-                        //     "reply":{
-                        //         "id":"adi4",
-                        //         "title":"M & M"
-                        //     }
-                        // },
-                        // {
-                        //     "type": "reply",
-                        //     "reply":{
-                        //         "id":"adi5",
-                        //         "title":"Rice Krispies"
-                        //     }
-                        // },
-                        // {
-                        //     "type": "reply",
-                        //     "reply":{
-                        //         "id":"compra",
-                        //         "title":"❌ terminar compra"
-                        //     }
-                        // },
                     ]
                 }
             }
