@@ -421,27 +421,27 @@ export function EnviarMensajeWhastapp(text, number) {
                                 "title":"5 Mounds"
                             }
                         },
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"adi4",
-                                "title":"M & M"
-                            }
-                        },
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"adi5",
-                                "title":"Rice Krispies"
-                            }
-                        },
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"compra",
-                                "title":"❌ terminar compra"
-                            }
-                        },
+                        // {
+                        //     "type": "reply",
+                        //     "reply":{
+                        //         "id":"adi4",
+                        //         "title":"M & M"
+                        //     }
+                        // },
+                        // {
+                        //     "type": "reply",
+                        //     "reply":{
+                        //         "id":"adi5",
+                        //         "title":"Rice Krispies"
+                        //     }
+                        // },
+                        // {
+                        //     "type": "reply",
+                        //     "reply":{
+                        //         "id":"compra",
+                        //         "title":"❌ terminar compra"
+                        //     }
+                        // },
                     ]
                 }
             }
