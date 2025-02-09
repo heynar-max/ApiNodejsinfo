@@ -411,7 +411,7 @@ export function EnviarMensajeWhastapp(text, number) {
                             "type": "reply",
                             "reply":{
                                 "id":"adici",
-                                "title":"⬅️ Atrás"
+                                "title":"➡️ Más Productos"
                             }
                         },
                         {
