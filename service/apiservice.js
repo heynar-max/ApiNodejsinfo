@@ -342,22 +342,22 @@ export function EnviarMensajeWhastapp(text, number) {
                                     "description": "Mani Planters 6oz sal y vinagre"
                                 },
                                 {
-                                    "id": "adicional2",
+                                    "id": "adi2",
                                     "title": "Oreo mini",
                                     "description": "Oreo mini golden 3oz"
                                 },
                                 {
-                                    "id": "adicional3",
+                                    "id": "adi3",
                                     "title": "5 Mounds",
                                     "description": "5 Mounds 3oz"
                                 },
                                 {
-                                    "id": "adicional4",
+                                    "id": "adi4",
                                     "title": "M & M",
                                     "description": "M & M  3.1oz"
                                 },
                                 {
-                                    "id": "adicional5",
+                                    "id": "adi5",
                                     "title": "Rice Krispies",
                                     "description": "Rice Krispies 2.2oz "
                                 }
@@ -409,16 +409,313 @@ export function EnviarMensajeWhastapp(text, number) {
                         },
                         {
                             "type": "reply",
-                            "reply": {
-                                "id": "producto1",
-                                "title": "Sweetheart 🧸 White"
+                            "reply":{
+                                "id":"adi2",
+                                "title":"Oreo mini"
                             }
                         },
                         {
                             "type": "reply",
+                            "reply":{
+                                "id":"adi3",
+                                "title":"5 Mounds"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi4",
+                                "title":"M & M"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi5",
+                                "title":"Rice Krispies"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"compra",
+                                "title":"❌ terminar compra"
+                            }
+                        },
+                    ]
+                }
+            }
+        });
+    } else if (text.includes("adi2")) {
+        userState[number].productos = [...userState[number].productos, "Oreo mini"]; // Agregar producto usando spread operator
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/vj6i48n2okzwqqrx6cqz.jpg",
+                    }
+                },
+                "body": {
+                    "text": "📌 Includes Oreo mini golden.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
                             "reply": {
-                                "id": "producto2",
-                                "title": "Puppy Love 🧸"
+                                "id": "adquicompra",
+                                "title": "🛒 agregar ahora"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi1",
+                                "title":"Mani Planters"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi3",
+                                "title":"5 Mounds"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi4",
+                                "title":"M & M"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi5",
+                                "title":"Rice Krispies"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"compra",
+                                "title":"❌ terminar compra"
+                            }
+                        },
+                    ]
+                }
+            }
+        });
+    } else if (text.includes("adi3")) {
+        userState[number].productos = [...userState[number].productos, "5 Mounds"]; // Agregar producto usando spread operator
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/acmaxpnxqdqfikhhhlhl.jpg",
+                    }
+                },
+                "body": {
+                    "text": "📌 Includes Oreo mini golden.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "adquicompra",
+                                "title": "🛒 agregar ahora"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi1",
+                                "title":"Mani Planters"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi2",
+                                "title":"Oreo mini"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi4",
+                                "title":"M & M"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi5",
+                                "title":"Rice Krispies"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"compra",
+                                "title":"❌ terminar compra"
+                            }
+                        },
+                    ]
+                }
+            }
+        });
+    } else if (text.includes("adi4")) {
+        userState[number].productos = [...userState[number].productos, "M & M"]; // Agregar producto usando spread operator
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/cogifjvjeza3ufdutabh.jpg",
+                    }
+                },
+                "body": {
+                    "text": "📌 Includes Oreo mini golden.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "adquicompra",
+                                "title": "🛒 agregar ahora"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi1",
+                                "title":"Mani Planters"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi2",
+                                "title":"Oreo mini"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi3",
+                                "title":"5 Mounds"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi5",
+                                "title":"Rice Krispies"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"compra",
+                                "title":"❌ terminar compra"
+                            }
+                        },
+                    ]
+                }
+            }
+        });
+    } else if (text.includes("adi5")) {
+        userState[number].productos = [...userState[number].productos, "Rice Krispies"]; // Agregar producto usando spread operator
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "header": {
+                    "type": "image",
+                    "image": {
+                        "link": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/cogifjvjeza3ufdutabh.jpg",
+                    }
+                },
+                "body": {
+                    "text": "📌 Includes Oreo mini golden.\n\n🎁 A perfect detail for Valentine's Day. 💖\n\n💵 Price: $1.5",
+                },
+                "footer": {
+                    "text": "¿Quieres comprar este producto?"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "adquicompra",
+                                "title": "🛒 agregar ahora"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi1",
+                                "title":"Mani Planters"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi2",
+                                "title":"Oreo mini"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi3",
+                                "title":"5 Mounds"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"adi4",
+                                "title":"M & M"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"compra",
+                                "title":"❌ terminar compra"
                             }
                         },
                     ]
