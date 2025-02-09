@@ -9,6 +9,7 @@ const productosInfo = {
     "Oreo mini": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/vj6i48n2okzwqqrx6cqz.jpg",
     "5 Mounds": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/vj6i48n2okzwqqrx6cqz.jpg",
     "M & M": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/cogifjvjeza3ufdutabh.jpg",
+    "Rice Krispies": "https://res.cloudinary.com/dzty81hol/image/upload/v1739050130/cogifjvjeza3ufdutabh.jpg",
 };
 
 export async function EnviarCorreoCompra(number, productos, nombre, ciudad) {
