@@ -31,14 +31,14 @@ export async function EnviarCorreoCompra(number, productos, nombre, ciudad) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "heynar76max@gmail.com",  // Reemplázalo con tu correo
-            pass: "htgk dttq kfaw beha"         // Usa una contraseña de aplicación si es Gmail
+            user: "caro7434@gmail.com",  // Reemplázalo con tu correo
+            pass: "mtxw hmgh osio czar"         // Usa una contraseña de aplicación si es Gmail
         }
     });
 
     const mailOptions = {
-        from: "heynar76max@gmail.com",
-        to: "heynar76max@gmail.com",  // Donde recibirás la notificación
+        from: "caro7434@gmail.com",
+        to: "caro7434@gmail.com",  // Donde recibirás la notificación
         subject: "Nueva Compra Recibida",
         html: `
             <meta charset="UTF-8">
